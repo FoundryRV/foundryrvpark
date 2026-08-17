@@ -13,7 +13,14 @@
     root.setAttribute('data-theme', mode);
     if (!toggle) return;
     toggle.innerHTML = mode === 'dark' ? SUN : MOON;
-    toggle.setAttribute('aria-label', 'Switch to ' + (mode === 'dark' ? 'light' : 'dark') + ' mode');
+    var es = (root.getAttribute('lang') || 'en').indexOf('es') === 0;
+    var next = mode === 'dark' ? 'light' : 'dark';
+    toggle.setAttribute(
+      'aria-label',
+      es
+        ? 'Cambiar a modo ' + (next === 'light' ? 'claro' : 'oscuro')
+        : 'Switch to ' + next + ' mode'
+    );
   }
   apply();
 
