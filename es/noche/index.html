@@ -67,27 +67,27 @@
         </ul>
       </div>
       <div class="col-media">
-        <div class="bookbox" id="book" data-links="{}">
+        <div class="bookbox" id="book" data-links="{&quot;1&quot;: &quot;https://square.link/u/nOveZqTH&quot;, &quot;2&quot;: &quot;https://square.link/u/nOveZqTH&quot;, &quot;3&quot;: &quot;https://square.link/u/nOveZqTH&quot;, &quot;4&quot;: &quot;https://square.link/u/nOveZqTH&quot;, &quot;5&quot;: &quot;https://square.link/u/nOveZqTH&quot;, &quot;6&quot;: &quot;https://square.link/u/nOveZqTH&quot;, &quot;7&quot;: &quot;https://square.link/u/nOveZqTH&quot;}">
           <h2 class="h-sub">Reserve y pague</h2>
           <label class="field">
             <span class="field__label">&iquest;Cu&aacute;ntas noches?</span>
             <select id="nights" class="field__input">
-              <option value="1">1 noche &mdash; $64.95 con impuesto</option>
-              <option value="2">2 noches &mdash; $129.90 con impuesto</option>
-              <option value="3">3 noches &mdash; $194.85 con impuesto</option>
-              <option value="4">4 noches &mdash; $259.80 con impuesto</option>
-              <option value="5">5 noches &mdash; $324.75 con impuesto</option>
-              <option value="6">6 noches &mdash; $389.70 con impuesto</option>
-              <option value="7">7 noches &mdash; $454.65 con impuesto</option>
+              <option value="1">1 noche &mdash; $60.00</option>
+              <option value="2">2 noches &mdash; $120.00</option>
+              <option value="3">3 noches &mdash; $180.00</option>
+              <option value="4">4 noches &mdash; $240.00</option>
+              <option value="5">5 noches &mdash; $300.00</option>
+              <option value="6">6 noches &mdash; $360.00</option>
+              <option value="7">7 noches &mdash; $420.00</option>
             </select>
           </label>
-          <p class="bookbox__total" aria-live="polite"><span id="sum">$60.00 + $4.95 impuesto</span> = <strong id="tot">$64.95</strong></p>
+          <p class="bookbox__total" aria-live="polite"><strong id="tot">$60.00</strong> <span id="sum">m&aacute;s impuestos aplicables</span></p>
           <label class="agree">
             <input type="checkbox" id="agree" />
             <span>He le&iacute;do y acepto los <a class="link-strong" href="../../overnight/terms/" target="_blank" rel="noopener">T&eacute;rminos de estancia por noche</a> (en ingl&eacute;s).</span>
           </label>
           <button class="btn btn--primary bookbox__pay" id="pay" type="button" disabled>Continuar al pago seguro</button>
-          <p class="bookbox__note small muted" id="paynote">Pagar&aacute; en la p&aacute;gina segura de Square, donde tambi&eacute;n anotar&aacute; su fecha de llegada y los datos de su RV. Su recibo es su confirmaci&oacute;n.</p>
+          <p class="bookbox__note small muted" id="paynote">En la p&aacute;gina segura de Square, ponga la cantidad en <strong id="qn">1</strong> (una por noche) y anote su fecha de llegada y los datos de su RV. Su recibo es su confirmaci&oacute;n.</p>
           <p class="bookbox__note small muted">&iquest;M&aacute;s de 7 noches? Llame al <a href="tel:+18064602424">806-460-2424</a>. &iquest;Un mes o m&aacute;s? <a href="https://na4.docusign.net/Member/PowerFormSigning.aspx?PowerFormId=102dc6d5-dcdc-48c1-9114-8ed7002d5dbd&amp;env=na4&amp;acct=5a6d45d3-995d-4c4a-9f34-7e88ad826773&amp;v=2" target="_blank" rel="noopener">Firme el contrato mensual</a>.</p>
         </div>
         <script>
@@ -97,9 +97,9 @@
           var sel=document.getElementById('nights'),ag=document.getElementById('agree'),pay=document.getElementById('pay');
           var tw='impuesto';
           function money(c){return '$'+(c/100).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g,',');}
-          function upd(){var n=+sel.value,b=n*6000,t=Math.round(b*0.0825);
-            document.getElementById('sum').textContent=money(b)+' + '+money(t)+' '+tw;
-            document.getElementById('tot').textContent=money(b+t);
+          function upd(){var n=+sel.value,b=n*6000;
+            document.getElementById('tot').textContent=money(b);
+            document.getElementById('qn').textContent=n;
             pay.disabled=!ag.checked;}
           sel.addEventListener('change',upd);ag.addEventListener('change',upd);upd();
           pay.addEventListener('click',function(){

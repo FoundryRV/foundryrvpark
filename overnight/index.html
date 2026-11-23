@@ -67,27 +67,27 @@
         </ul>
       </div>
       <div class="col-media">
-        <div class="bookbox" id="book" data-links="{}">
+        <div class="bookbox" id="book" data-links="{&quot;1&quot;: &quot;https://square.link/u/nOveZqTH&quot;, &quot;2&quot;: &quot;https://square.link/u/nOveZqTH&quot;, &quot;3&quot;: &quot;https://square.link/u/nOveZqTH&quot;, &quot;4&quot;: &quot;https://square.link/u/nOveZqTH&quot;, &quot;5&quot;: &quot;https://square.link/u/nOveZqTH&quot;, &quot;6&quot;: &quot;https://square.link/u/nOveZqTH&quot;, &quot;7&quot;: &quot;https://square.link/u/nOveZqTH&quot;}">
           <h2 class="h-sub">Book and pay</h2>
           <label class="field">
             <span class="field__label">How many nights?</span>
             <select id="nights" class="field__input">
-              <option value="1">1 night &mdash; $64.95 with tax</option>
-              <option value="2">2 nights &mdash; $129.90 with tax</option>
-              <option value="3">3 nights &mdash; $194.85 with tax</option>
-              <option value="4">4 nights &mdash; $259.80 with tax</option>
-              <option value="5">5 nights &mdash; $324.75 with tax</option>
-              <option value="6">6 nights &mdash; $389.70 with tax</option>
-              <option value="7">7 nights &mdash; $454.65 with tax</option>
+              <option value="1">1 night &mdash; $60.00</option>
+              <option value="2">2 nights &mdash; $120.00</option>
+              <option value="3">3 nights &mdash; $180.00</option>
+              <option value="4">4 nights &mdash; $240.00</option>
+              <option value="5">5 nights &mdash; $300.00</option>
+              <option value="6">6 nights &mdash; $360.00</option>
+              <option value="7">7 nights &mdash; $420.00</option>
             </select>
           </label>
-          <p class="bookbox__total" aria-live="polite"><span id="sum">$60.00 + $4.95 tax</span> = <strong id="tot">$64.95</strong></p>
+          <p class="bookbox__total" aria-live="polite"><strong id="tot">$60.00</strong> <span id="sum">plus any applicable tax</span></p>
           <label class="agree">
             <input type="checkbox" id="agree" />
             <span>I have read and agree to the <a class="link-strong" href="../overnight/terms/" target="_blank" rel="noopener">Overnight Stay Terms</a>.</span>
           </label>
           <button class="btn btn--primary bookbox__pay" id="pay" type="button" disabled>Continue to secure payment</button>
-          <p class="bookbox__note small muted" id="paynote">You'll pay on Square's secure checkout and enter your arrival date and RV details there. Your receipt is your confirmation.</p>
+          <p class="bookbox__note small muted" id="paynote">On Square's secure checkout, set the quantity to <strong id="qn">1</strong> (one per night), then enter your arrival date and RV details. Your receipt is your confirmation.</p>
           <p class="bookbox__note small muted">Staying longer than 7 nights? Call <a href="tel:+18064602424">806-460-2424</a>. Staying a month or more? <a href="https://na4.docusign.net/Member/PowerFormSigning.aspx?PowerFormId=102dc6d5-dcdc-48c1-9114-8ed7002d5dbd&amp;env=na4&amp;acct=5a6d45d3-995d-4c4a-9f34-7e88ad826773&amp;v=2" target="_blank" rel="noopener">Sign the monthly agreement</a>.</p>
         </div>
         <script>
@@ -97,9 +97,9 @@
           var sel=document.getElementById('nights'),ag=document.getElementById('agree'),pay=document.getElementById('pay');
           var tw='tax';
           function money(c){return '$'+(c/100).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g,',');}
-          function upd(){var n=+sel.value,b=n*6000,t=Math.round(b*0.0825);
-            document.getElementById('sum').textContent=money(b)+' + '+money(t)+' '+tw;
-            document.getElementById('tot').textContent=money(b+t);
+          function upd(){var n=+sel.value,b=n*6000;
+            document.getElementById('tot').textContent=money(b);
+            document.getElementById('qn').textContent=n;
             pay.disabled=!ag.checked;}
           sel.addEventListener('change',upd);ag.addEventListener('change',upd);upd();
           pay.addEventListener('click',function(){
